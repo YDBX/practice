@@ -8,12 +8,12 @@ for i in $(seq 1 3); do
     ./stack input_${i}.txt output_cpp_${i}.txt
     dline_py=$(diff output_py_${i}.txt golden_${i}.txt |  wc | awk -F ' ' '{print $1}')
     dline_cpp=$(diff output_cpp_${i}.txt golden_${i}.txt |  wc | awk -F ' ' '{print $1}')
-    if [ "${dline_py}" == "0" ] && [ -f output_py_${i}.txt ] ; then
+    if [ "${dline_py}" == "1" ] && [ -f output_py_${i}.txt ] ; then
         echo -e "${GREEN}stack.py is correct in test case: input_${i}.txt${NC}"
     else
         echo -e "${RED}stack.py is incorrect in test case: input_${i}.txt${NC}"
     fi
-    if [ "${dline_cpp}" == "0" ] && [ -f output_cpp_${i}.txt ]; then
+    if [ "${dline_cpp}" == "1" ] && [ -f output_cpp_${i}.txt ]; then
         echo -e "${GREEN}stack.cpp is correct in test case: input_${i}.txt${NC}"
     else
         echo -e "${RED}stack.cpp is incorrect in test case: input_${i}.txt${NC}"
